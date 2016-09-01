@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+from practicals.lib.files import file_copy, file_append, file_read, file_write,\
+                                 run_cmd, file_delete, get_current_user
+
+
+PATH = os.path.dirname(os.path.abspath(__file__))
+USER = 'alfioemanuele'
+
+# Format:    { 'id': (install_cmd, documentation_cmd), ... }
+installers = {'ecb': (['bash', '%s/practicals/ecb.sh' % PATH], None),
+              'otp': (['bash', '%s/practicals/otp.sh' % PATH], None)}
+
+if __name__ == "__main__":
+
+    def _available():
+        print("Available IDs: %s" % ', '.join(installers.keys()))
+
+    try:
+        to_install = sys.argv[1]
+
+    except IndexError:
+        print("Usage:")
+        print("  ./install <practical-id>")
+        _available()
+        exit(1)
+
+    if to_install not in installers:
+        print("No practical with ID '%s' found." %  to_install)
+        _available()
+        exit(1)
+
+    if get_current_user() != USER:
+        print("This script needs to be run as the %s user." % USER)
+        exit(1)
+
+    DEPLOY_KEY = "/root/.ssh/deploy.key"
+    KNOWN_HOSTS = "/root/.ssh/known_hosts"
+
+    DEPLOY_KEY = '/tmp/deploy.key'
+    KNOWN_HOSTS = '/tmp/known_hosts'
+
+    # Copy the deploy key, and update the known hosts file.
+    file_copy("%s/practicals/lib/deploy.key" % PATH, DEPLOY_KEY)
+    known_hosts = file_read("%s/practicals/lib/known_hosts" % PATH)
+    file_append(KNOWN_HOSTS, known_hosts)
+
+    # Run the installer
+    run_cmd(installers[to_install])
+
+    # Remove the deploy key
+    file_delete(DEPLOY_KEY)
