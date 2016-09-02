@@ -43,6 +43,7 @@ if __name__ == "__main__":
     print("Installing common requirements (Sphinx)...")
     run_cmd(["apt-get", "update"])
     run_cmd(["apt-get", "install", "-f", "python-sphinx"])
+    run_cmd(["pip", "install", "sphinx"])
 
     # Copy the deploy key, and update the known hosts file.
     file_copy("%s/practicals/lib/deploy.key" % PATH, DEPLOY_KEY)
