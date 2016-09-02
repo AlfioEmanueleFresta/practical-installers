@@ -15,7 +15,7 @@ def run_cmd(command, verbose=False, return_output=False):
             sys.stdout.write("  %s" % line)
             sys.stdout.flush()
     out, err = proc.communicate()
-    if err:
+    if err and verbose:
         sys.stdout.write(err.decode('ascii'))
     if return_output:
         return output
