@@ -3,7 +3,7 @@ import os
 import subprocess
 
 
-def run_cmd(command, verbose=False, return_output=False):
+def run_cmd(command, verbose=False, debug=False, return_output=False):
     print("$ %s" % ' '.join(command))
     proc = subprocess.Popen(command, stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE)
@@ -15,7 +15,7 @@ def run_cmd(command, verbose=False, return_output=False):
             sys.stdout.write("  %s" % line)
             sys.stdout.flush()
     out, err = proc.communicate()
-    if err and verbose:
+    if err and debug:
         sys.stdout.write(err.decode('ascii'))
     if return_output:
         return output
