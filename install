@@ -3,7 +3,8 @@
 import sys
 import os
 from practicals.lib.files import file_copy, file_append, file_read, file_write,\
-                                 run_cmd, file_delete, get_current_user
+                                 run_cmd, file_delete, get_current_user,\
+                                 get_tmp_dir
 
 
 PATH = os.path.dirname(os.path.abspath(__file__))
