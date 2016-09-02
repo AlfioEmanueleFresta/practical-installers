@@ -12,7 +12,8 @@ USER = 'root'
 
 # Format:    { 'id': install_cmd, ... }
 installers = {'ecb': ['bash', '%s/practicals/ecb.sh' % PATH],
-              'otp': ['bash', '%s/practicals/otp.sh' % PATH]}
+              'otp': ['bash', '%s/practicals/otp.sh' % PATH],
+              'xss': ['bash', '%s/practicals/xss.sh' % PATH]}
 
 if __name__ == "__main__":
 
