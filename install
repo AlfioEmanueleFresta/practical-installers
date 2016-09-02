@@ -64,7 +64,7 @@ if __name__ == "__main__":
     installer = installers[to_install] + [doc_path]
 
     # Run the installer
-    run_cmd(installer)
+    run_cmd(installer, verbose=True)
 
     # Remove the deploy key
     file_delete(DEPLOY_KEY)
