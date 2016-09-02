@@ -37,7 +37,7 @@ if __name__ == "__main__":
         print("This script needs to be run as the %s user." % USER)
         exit(1)
 
-    DEPLOY_KEY = "/root/.ssh/deploy.key"
+    DEPLOY_KEY = "/root/.ssh/id_rsa"
     KNOWN_HOSTS = "/root/.ssh/known_hosts"
 
     print("Installing common requirements (Sphinx)...", end=" ", flush=True)

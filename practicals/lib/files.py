@@ -4,6 +4,7 @@ import subprocess
 
 
 def run_cmd(command, verbose=True, return_output=False):
+    print("$ " % ' '.join(command))
     proc = subprocess.Popen(command, stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE)
     output = ''
