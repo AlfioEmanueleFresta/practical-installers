@@ -8,6 +8,7 @@ PROJECT_REPO=gitlab@git.cs.york.ac.uk:cyber-practicals/practical-ecb-python.git
 
 echo "Downloading Python code..."
 cd $PROJECT_PATH
+rm -rf $PROJECT_NAME
 git clone $PROJECT_REPO $PROJECT_NAME
 
 echo "Installing PIP modules..."
