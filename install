@@ -40,10 +40,9 @@ if __name__ == "__main__":
     DEPLOY_KEY = "/root/.ssh/id_rsa"
     KNOWN_HOSTS = "/root/.ssh/known_hosts"
 
-    print("Installing common requirements (Sphinx)...", end=" ", flush=True)
+    print("Installing common requirements (Sphinx)...")
     run_cmd(["apt-get", "update"])
     run_cmd(["apt-get", "install", "-f", "python-sphinx"])
-    print("OK")
 
     # Copy the deploy key, and update the known hosts file.
     file_copy("%s/practicals/lib/deploy.key" % PATH, DEPLOY_KEY)

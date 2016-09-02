@@ -12,7 +12,7 @@ def run_cmd(command, verbose=True, return_output=False):
         line = line.decode('ascii')
         output += line
         if verbose:
-            sys.stdout.write(line)
+            sys.stdout.write("  %s" % line)
             sys.stdout.flush()
     out, err = proc.communicate()
     if err:

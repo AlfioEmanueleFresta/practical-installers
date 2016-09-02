@@ -22,5 +22,5 @@ cd $PROJECT_PATH$PROJECT_NAME/
 make html
 mv _build/html $PROJECT_DOC
 
-echo "Done -- Code Installed in...........: $PROJECT_PATH$PROJECT_NAME."
+echo "Done -- Code Installed in...........: $PROJECT_PATH$PROJECT_NAME"
 echo "        Documentation installed in..: $PROJECT_DOC"
