@@ -42,10 +42,18 @@ if __name__ == "__main__":
         print("This script needs to be run as the %s user." % USER)
         exit(1)
 
+    try:
+        doc_path = sys.argv[2]
+
+    except IndexError:
+        doc_path = get_tmp_dir()
+
+    print("Installing practical '%s'." % to_install)
+    print("The documentation will be installed in %s." % doc_path)
+
     DEPLOY_KEY = "/root/.ssh/id_rsa"
     KNOWN_HOSTS = "/root/.ssh/known_hosts"
 
-    print("Installing common requirements (Sphinx)...")
     run_cmd(["apt-get", "update"])
     run_cmd(["apt-get", "install", "-f", "python-sphinx"])
     run_cmd(["pip", "install", "sphinx"])
@@ -57,13 +65,7 @@ if __name__ == "__main__":
     chmod("0600", KNOWN_HOSTS)
     chmod("0600", DEPLOY_KEY)
 
-    try:
-        doc_path = sys.argv[2]
-
-    except IndexError:
-        doc_path = get_tmp_dir()
-
-    installer = installers[to_install] + [doc_path, SEP] 
+    installer = installers[to_install] + [doc_path, SEP]
 
     # Run the installer
     run_cmd(installer, show_only=SEP)
