@@ -10,9 +10,9 @@ from practicals.lib.files import file_copy, file_append, file_read, file_write,\
 PATH = os.path.dirname(os.path.abspath(__file__))
 USER = 'root'
 
-# Format:    { 'id': (install_cmd, documentation_cmd), ... }
-installers = {'ecb': (['bash', '%s/practicals/ecb.sh' % PATH], None),
-              'otp': (['bash', '%s/practicals/otp.sh' % PATH], None)}
+# Format:    { 'id': install_cmd, ... }
+installers = {'ecb': ['bash', '%s/practicals/ecb.sh' % PATH],
+              'otp': ['bash', '%s/practicals/otp.sh' % PATH]}
 
 if __name__ == "__main__":
 
