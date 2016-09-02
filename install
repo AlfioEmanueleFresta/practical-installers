@@ -39,16 +39,26 @@ if __name__ == "__main__":
     DEPLOY_KEY = "/root/.ssh/deploy.key"
     KNOWN_HOSTS = "/root/.ssh/known_hosts"
 
-    DEPLOY_KEY = '/tmp/deploy.key'
-    KNOWN_HOSTS = '/tmp/known_hosts'
+    print("Installing common requirements (Sphinx)...", end=" ", flush=True)
+    run_cmd(["apt-get", "update"])
+    run_cmd(["apt-get", "install", "-f", "python-sphinx"])
+    print("OK")
 
     # Copy the deploy key, and update the known hosts file.
     file_copy("%s/practicals/lib/deploy.key" % PATH, DEPLOY_KEY)
     known_hosts = file_read("%s/practicals/lib/known_hosts" % PATH)
     file_append(KNOWN_HOSTS, known_hosts)
 
+    try:
+        doc_path = sys.argv[2]
+
+    except IndexError:
+        doc_path = get_tmp_dir()
+
+    installer = installers[to_install] + [doc_path]
+
     # Run the installer
-    run_cmd(installers[to_install])
+    run_cmd(installer)
 
     # Remove the deploy key
     file_delete(DEPLOY_KEY)

@@ -3,6 +3,7 @@
 This is a script that can be used to download and install many
 practicals on a Cyber Practicals base VM.
 
+The base VM can be downloaded from [here](https://drive.google.com/open?id=0B71VCqMfkVkTRkpRQjA0dlNwV2s).
 
 ## Available practicals
 
@@ -15,8 +16,9 @@ practicals on a Cyber Practicals base VM.
 
 ## Usage
 
-Login as root
-```
+Login as root (via SSH or Web shell), download this project and run:
+
+```bash
 ./install <practical-id>
 ```
 
