@@ -9,6 +9,7 @@ from practicals.lib.files import file_copy, file_append, file_read, file_write,\
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 USER = 'root'
+SEP  = 'OUT-'
 
 # Format:    { 'id': install_cmd, ... }
 installers = {'ecb': ['bash', '%s/practicals/ecb.sh' % PATH],
@@ -62,10 +63,10 @@ if __name__ == "__main__":
     except IndexError:
         doc_path = get_tmp_dir()
 
-    installer = installers[to_install] + [doc_path]
+    installer = installers[to_install] + [doc_path, SEP] 
 
     # Run the installer
-    run_cmd(installer, verbose=True)
+    run_cmd(installer, show_only=SEP)
 
     # Remove the deploy key
     file_delete(DEPLOY_KEY)

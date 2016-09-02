@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SEP=$2
 
 WEBAPP_REPO="gitlab@git.cs.york.ac.uk:cyber-practicals/webapp.git"
 WEBAPP_PORT=12342
@@ -103,8 +104,8 @@ mv _build/html $PROJECT_DOC
 rm -rf $TMPDIR
 
 echo " "
-echo "Done -- Webapp installed in.......: $WEBAPP_PATH"
-echo "        Webapp listening at.......: http://0.0.0.0:$WEBAPP_PORT"
-echo "        Pastebin installed in.....: $PASTEBIN_PATH"
-echo "        Pastebin listening at.....: http://0.0.0.0:$PASTEBIN_PORT"
-echo "        Documentation installed in: $PROJECT_DOC"
+echo "$2Done -- Webapp installed in.......: $WEBAPP_PATH"
+echo "$2        Webapp listening at.......: http://0.0.0.0:$WEBAPP_PORT"
+echo "$2        Pastebin installed in.....: $PASTEBIN_PATH"
+echo "$2        Pastebin listening at.....: http://0.0.0.0:$PASTEBIN_PORT"
+echo "$2        Documentation installed in: $PROJECT_DOC"

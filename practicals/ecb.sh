@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PROJECT_DOC=$1
+SEP=$2
 PROJECT_USER=student
 PROJECT_PATH=/home/$PROJECT_USER/
 PROJECT_NAME=ecb
@@ -27,5 +28,5 @@ make html
 mv _build/html $PROJECT_DOC
 rm -rf $TMPDIR
 
-echo "Done -- Code Installed in...........: $PROJECT_PATH$PROJECT_NAME"
-echo "        Documentation installed in..: $PROJECT_DOC"
+echo "$2Done -- Code Installed in...........: $PROJECT_PATH$PROJECT_NAME"
+echo "$2        Documentation installed in..: $PROJECT_DOC"
