@@ -19,7 +19,15 @@ The base VM can be downloaded from [here](https://drive.google.com/open?id=0B71V
 Login as root (via SSH or Web shell), download this project and run:
 
 ```bash
-./install <practical-id>
+./install <practical-id> [docs-directory]
 ```
 
-Where `pratical-id` is one of the IDs from the table above.
+Where `pratical-id` is one of the IDs from the table above, and `docs-directory`
+is a directory to be used to install the practical's documentation.
+
+E.g.:
+
+```bash
+mkdir /home/student/ecb-docs/
+./install ecb /home/student/ecb-docs/
+```

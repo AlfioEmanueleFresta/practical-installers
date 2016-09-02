@@ -17,19 +17,22 @@ installers = {'ecb': ['bash', '%s/practicals/ecb.sh' % PATH],
 if __name__ == "__main__":
 
     def _available():
-        print("Available IDs: %s" % ', '.join(installers.keys()))
+        return ', '.join(installers.keys())
 
     try:
         to_install = sys.argv[1]
 
     except IndexError:
         print("Usage:")
-        print("  ./install <practical-id>")
-        _available()
+        print("  ./install <practical-id> [docs-path]")
+        print("    <practical-id> - One of: %s" % _available())
+        print("    <docs-path>    - The path you want the docs to be installed in.")
+        print("                     If not specified, a new temp directory will be created.")
         exit(1)
 
     if to_install not in installers:
         print("No practical with ID '%s' found." %  to_install)
+        print("Available IDs are: %s" % _available())
         _available()
         exit(1)
 
