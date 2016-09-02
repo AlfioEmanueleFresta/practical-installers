@@ -4,7 +4,7 @@ import sys
 import os
 from practicals.lib.files import file_copy, file_append, file_read, file_write,\
                                  run_cmd, file_delete, get_current_user,\
-                                 get_tmp_dir
+                                 get_tmp_dir, chmod
 
 
 PATH = os.path.dirname(os.path.abspath(__file__))
@@ -49,6 +49,8 @@ if __name__ == "__main__":
     file_copy("%s/practicals/lib/deploy.key" % PATH, DEPLOY_KEY)
     known_hosts = file_read("%s/practicals/lib/known_hosts" % PATH)
     file_append(KNOWN_HOSTS, known_hosts)
+    chmod("0600", KNOWN_HOSTS)
+    chmod("0600", DEPLOY_KEY)
 
     try:
         doc_path = sys.argv[2]

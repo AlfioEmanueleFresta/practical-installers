@@ -50,3 +50,7 @@ def get_tmp_dir():
 
 def get_current_user():
     return run_cmd(['whoami'], return_output=True).strip()
+
+
+def chmod(mode, filename):
+    return run_cmd(["chmod", mode, filename])
